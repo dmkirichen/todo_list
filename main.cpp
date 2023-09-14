@@ -1,13 +1,16 @@
-#include "task.hpp"
-#include "list.hpp"
+#include "task.h"
+#include "todolist.h"
+#include "util.h"
 #include <iostream>
 #include <string>
 #include <sstream>
 
 int main()
 {
-    List list{};
+    ToDoList todoList{};
     std::string command;
+
+    // std::cout << strikethrough("this text is strikethrough") << std::endl;
 
     while (true) // for now we will have cli control over the list
     {

@@ -6,6 +6,8 @@
 
 class Task
 {
+public:
+    void complete();
 private:
     uint16_t id = 0;
     bool ready = false;
