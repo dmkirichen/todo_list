@@ -2,16 +2,15 @@
 #define TASK_HPP
 
 #include <string>
-#include "stdint.h"
 
 class Task
 {
 public:
+    Task(std::string text);
     void complete();
 private:
-    uint16_t id = 0;
-    bool ready = false;
-    std::string text = "";
+    bool _ready = false;
+    std::string _text = "";
 };
 
 #endif
