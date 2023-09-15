@@ -3,10 +3,11 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <memory>
 
 int main()
 {
-    ToDoList todoList{};
+    ToDoList todoList{"test list"};
     std::string command;
 
     while (true) // for now we will have cli control over the list
@@ -16,14 +17,14 @@ int main()
 
         if (command == "help")
         {
-            std::cout << "Possible commands are [help, add, do, delete, exit]" << std::endl;
+            std::cout << "Possible commands are [help, list, add, do, delete, exit]" << std::endl;
         } else if (command == "add")
         {
             std::cout << "You've run [add] command, describe your task:" << std::endl;
             std::string taskText;
             std::cin >> taskText;
-            Task t = Task(taskText);
-            todoList.addTask(t);
+            std::shared_ptr<Task> pT = std::make_shared<Task>(taskText);
+            todoList.addTask(pT);
         } else if (command == "do")
         {
             std::cout << "You've run [do] command, type the id of the task:" << std::endl;
@@ -38,6 +39,9 @@ int main()
             std::cin >> idStr;
             uint16_t id = (uint16_t) strtoul(idStr.c_str(), NULL, 0);
             todoList.delTask(id);
+        } else if (command == "list")
+        {
+            todoList.print();
         } else if (command == "exit")
         {
             std::cout << "Shutting the program..." << std::endl;
