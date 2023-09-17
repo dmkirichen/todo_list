@@ -9,3 +9,8 @@ void Task::complete()
 {
     _ready = true;
 };
+
+std::string Task::getText()
+{
+    return _text;
+};

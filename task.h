@@ -7,6 +7,7 @@ class Task
 {
 public:
     Task(std::string text);
+    std::string getText();
     void complete();
 private:
     bool _ready = false;

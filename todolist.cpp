@@ -2,7 +2,7 @@
 
 ToDoList::ToDoList(std::string title)
 {
-    _curId = 0;
+    _curId = 1;
     _title = title;
 };
 
@@ -27,11 +27,15 @@ void ToDoList::completeTask(uint16_t id)
 
 std::string ToDoList::print()
 {
-    // TODO finish iterating on tasks
     std::stringstream s{};
     for (auto pair : _map)
     {
-        s << pair[0] << ") " << pair[1] << "\n";
+        s << pair.first << ") " << (*(pair.second)).getText() << "\n";
     }
     return s.str();
+};
+
+std::string ToDoList::getTitle()
+{
+    return _title;
 };
