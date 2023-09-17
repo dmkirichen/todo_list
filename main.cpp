@@ -17,36 +17,46 @@ int main()
 
         if (command == "help")
         {
-            std::cout << "Possible commands are [help, list, add, do, delete, exit]" << std::endl;
-        } else if (command == "add")
+            std::cout << "Possible commands are [help, list, add, complete, delete, exit]" << std::endl;
+        }
+        else if (command == "add")
         {
             std::cout << "You've run [add] command, describe your task:" << std::endl;
             std::string taskText;
             std::getline(std::cin, taskText);
             std::shared_ptr<Task> pT = std::make_shared<Task>(taskText);
             todoList.addTask(pT);
-        } else if (command == "do")
+        }
+        else if (command == "complete")
         {
-            std::cout << "You've run [do] command, type the id of the task:" << std::endl;
+            std::cout << "You've run [complete] command, type the id of the task:" << std::endl;
             std::string idStr;
             std::getline(std::cin, idStr);
-            uint16_t id = (uint16_t) strtoul(idStr.c_str(), NULL, 0);
+            uint16_t id = (uint16_t)strtoul(idStr.c_str(), NULL, 0);
             todoList.completeTask(id);
-        } else if (command == "delete")
+        }
+        else if (command == "delete")
         {
             std::cout << "You've run [delete] command, type the id of the task:" << std::endl;
             std::string idStr;
             std::getline(std::cin, idStr);
-            uint16_t id = (uint16_t) strtoul(idStr.c_str(), NULL, 0);
+            uint16_t id = (uint16_t)strtoul(idStr.c_str(), NULL, 0);
             todoList.delTask(id);
-        } else if (command == "list")
+        }
+        else if (command == "list")
         {
             std::cout << todoList.print();
-        } else if (command == "exit")
+        }
+        else if (command == "exit")
         {
             std::cout << "Shutting the program..." << std::endl;
             break;
-        } else {
+        }
+        else if (command == "")
+        {
+        }
+        else
+        {
             std::cout << "Please use one of the available commands" << std::endl;
         }
     }

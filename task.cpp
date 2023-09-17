@@ -14,3 +14,8 @@ std::string Task::getText()
 {
     return _text;
 };
+
+bool Task::isReady()
+{
+    return _ready;
+};

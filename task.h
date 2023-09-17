@@ -9,6 +9,7 @@ public:
     Task(std::string text);
     std::string getText();
     void complete();
+    bool isReady();
 private:
     bool _ready = false;
     std::string _text = "";

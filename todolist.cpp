@@ -30,7 +30,10 @@ std::string ToDoList::print()
     std::stringstream s{};
     for (auto pair : _map)
     {
-        s << pair.first << ") " << (*(pair.second)).getText() << "\n";
+        uint16_t tId = pair.first;
+        Task t = *(pair.second);
+        s << (t.isReady() ? "\u2611 " : "\u2610 ");
+        s << t.getText() << " [" << tId << "]\n";
     }
     return s.str();
 };
